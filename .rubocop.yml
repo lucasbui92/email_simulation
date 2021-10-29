@@ -1,0 +1,53 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 2.7
+  NewCops: enable
+  Exclude:
+    - 'bin/*'
+    - 'config/**/*'
+    - 'db/**/*'
+    - 'lib/tasks/**/*'
+    - 'vendor/**/*'
+    - 'tmp/**/*'
+    - '.git/**/*'
+    - 'node_modules/**/*'
+    - 'Gemfile'
+    - 'test/*'
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/BlockComments:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 130
+
+Metrics/BlockLength:
+  Enabled:
+    - 'spec/**/*'
+
+Naming/AccessorMethodName:
+  Enabled: false
+
+RSpec/ContextWording:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Enabled: false
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
