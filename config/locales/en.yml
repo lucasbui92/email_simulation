@@ -28,6 +28,29 @@
 #
 # To learn more, please read the Rails Internationalization guide
 # available at https://guides.rubyonrails.org/i18n.html.
-
+---
 en:
-  hello: "Hello world"
+  intro:
+    mailbox: "Mailbox"
+  sub-header:
+    menu: "Menu"
+    mails: "Mails"
+  nav-bar:
+    compose: "Compose"
+    inbox: "Inbox"
+    sent: "Sent"
+    draft: "Draft"
+    starred: "Starred"
+    deleted: "Deleted"
+  display:
+    compose:
+      compose-email: "Compose an email"
+      to: "To"
+      subject: "Subject"
+      content: "Content"
+      send: "Send"
+      save-draft: "Save as draft"
+  common:
+    switch-language: "%{language}"
+    delete-selected: "Delete selected"
+    sign-out: "Sign out"

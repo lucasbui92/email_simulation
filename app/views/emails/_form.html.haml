@@ -1,0 +1,17 @@
+- flash.each do |msg, name|
+  = content_tag :div, msg, class: name
+
+%h2= t 'compose-email', scope: %I[display compose]
+= form_with model: email do |form|
+  .form
+    = form.label t :to, scope: %I[display compose]
+    = form.text_area :to, size: '50x1', class: 'to'
+  .form
+    = form.label t :subject, scope: %I[display compose]
+    = form.text_area :subject, size: '50x1', class: 'subject'
+  .form
+    = form.label t :content, scope: %I[display compose], class: 'content-label'
+    = form.text_area :content, size: '50x5', class: 'content-area'
+  .form
+    = form.submit :Send, scope: %I[display compose]
+    = form.submit 'Save as draft'

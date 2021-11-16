@@ -5,6 +5,13 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  # resources :users, only: [:destroy]
   get '/users/sign_out', to: 'devise/sessions#destroy'
+  
+  get 'sent', to: 'emails#sent'
+  get 'draft', to: 'emails#draft'
+
+  resources :emails, only: [:new, :create]
+  resources :users do
+    delete 'delete_emails', to: 'emails#destroy'
+  end
 end
