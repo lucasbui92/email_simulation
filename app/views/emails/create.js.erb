@@ -1,2 +1,2 @@
 emails = document.getElementById("emails")
-emails.innerHTML = "<%= j render partial: 'form', locals: { email: @email } %>"
+emails.innerHTML = "<%= j render(@emails) %>"

@@ -9,10 +9,9 @@ class Emails::CreateEmailService < ApplicationService
 
   def call
     if @commit == Email::SAVE_DRAFT
-      return true if @user.draft_status_emails.new(@email_params).save
+      @email = @user.draft_status_emails.create(@email_params)
     else
-      return true if @user.sent_status_emails.new(@email_params).save
+      @email = @user.sent_status_emails.create(@email_params)
     end
-    raise StandardError, 'Not all fields filled in completely!'
   end
 end

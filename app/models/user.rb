@@ -14,4 +14,6 @@ class User < ApplicationRecord
 
   has_many :sent_status_emails, through: :sent_emails, source: :email, inverse_of: :sender_users
   has_many :draft_status_emails, through: :drafting_emails, source: :email, inverse_of: :drafter_users
+
+  validates :date_of_birth, presence: true
 end

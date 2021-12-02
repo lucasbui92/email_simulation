@@ -2,6 +2,6 @@
 
 class UsersController < ApplicationController
   def index
-    @emails = Email.all
+    @presenter = presenter(object: Email.all, current_user: current_user)
   end
 end

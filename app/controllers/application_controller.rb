@@ -19,4 +19,8 @@ class ApplicationController < ActionController::Base
   # def default_url_options
   #   { locale: I18n.locale }
   # end
+
+  def presenter(**args)
+    "#{controller_path}/#{action_name}_presenter".camelize.constantize.new(view_context, **args)
+  end
 end

@@ -1,43 +1,19 @@
 -# haml-lint:disable LineLength
-%h2= t :mailbox, scope: [:intro]
+%h2= t('.mailbox')
 
 .btn.btn-link{ type: 'button' }
-  - if params[:locale] == User::ENGLISH_CODE
-    = link_to t('switch-language', scope: [:common], language: 'Switch to Chinese'), root_path(locale: User::CHINESE_CODE), class: 'link-color'
-  - else
-    = link_to t('switch-language', scope: [:common], language: '切换到英文'), root_path(locale: User::ENGLISH_CODE), class: 'link-color'
+  = @presenter.change_language(params[:locale], t('.switch-language'))
 
 .row
   .col-3.card.text-dark.bg-warning.mb-3.menu-opacity
-    %h4.header.menu.text-primary.text-opacity-75= t 'menu', scope: ['sub-header']
+    %h4.header.menu.text-primary.text-opacity-75= t('.menu')
     %ul.card-body
-      .row.compose
-        %li
-          %i.fas.fa-edit
-          = link_to t(:compose, scope: ['nav-bar']), new_email_path(locale: I18n.locale), remote: true, class: 'link-color'
-      .row
-        %li
-          %i.fas.fa-envelope
-          = t :inbox, scope: ['nav-bar']
-        %li
-          %i.fas.fa-paper-plane
-          = link_to t(:sent, scope: ['nav-bar']), sent_path(locale: I18n.locale), remote: true
-        %li
-          %i.fas.fa-save
-          = link_to t(:draft, scope: ['nav-bar']), draft_path(locale: I18n.locale), remote: true
-        %li
-          %i.fas.fa-star
-          = t :starred, scope: ['nav-bar']
-        %li
-          %i.fas.fa-trash-alt
-          = t :deleted, scope: ['nav-bar']
+      = render('menu_side_bar', presenter: @presenter)
   .col-9.card.text-dark-50.bg-info.mb-3.mail-opacity
-    %h4.header.mail.text-primary.text-opacity-75= t :mails, scope: ['sub-header']
-    - if @emails
-      %ul.card-body#emails
+    %h4.header.mail.text-primary.text-opacity-75= t('.mails')
+    %ul.card-body#emails
     %div
-    = link_to t('.delete-selected'), user_delete_emails_path(current_user), method: :delete, class: 'link-color'
+    = @presenter.delete_selected(t('.delete-selected'))
 
 .btn.btn-link{ type: 'button' }
-  - if user_signed_in?
-    = link_to t('sign-out', scope: [:common]), destroy_user_session_path, method: :delete, class: 'link-color'
+  = @presenter.sign_out(t('.sign-out'))

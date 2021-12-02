@@ -1,0 +1,10 @@
+---
+en:
+  emails:
+    form:
+      compose-email: Compose an email
+      to: To
+      subject: Subject
+      content: Content
+      send: Send
+      save-draft: Save as draft

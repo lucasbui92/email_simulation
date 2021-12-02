@@ -1,3 +1,5 @@
 %li
-  = check_box_tag "accept"
+  = check_box_tag 'email_ids[]', email.id
   = email.subject
+  - unless deletable
+    = link_to 'Move to trash', email_moved_to_trash_path(email), method: :put, remote: true
