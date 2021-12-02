@@ -12,11 +12,17 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-require("bootstrap")
-import "../stylesheets/application";
+import "bootstrap";
+import "./stylesheets/application";
+var jQuery = require("jquery");
+global.$ = global.jQuery = jQuery;
+window.$ = window.jQuery = jQuery;
+
 document.addEventListener("turbolinks:load", function() {
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
         $('[data-toggle="popover"]').popover()
     })
 })
+
+import "@fortawesome/fontawesome-free/css/all";

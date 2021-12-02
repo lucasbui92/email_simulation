@@ -1,0 +1,24 @@
+- flash.each do |msg, name|
+  = content_tag :div, msg, class: name
+
+- if email.errors.any?
+  %h2
+    = pluralize(email.errors.count, 'error')
+    prohibited this article from being saved:
+  - email.errors.each do |error|
+    - error.full_message
+
+%h2= t('.compose-email')
+= form_with model: email, local: false do |form|
+  .form
+    = form.label t('.to')
+    = form.text_area :to, size: '50x1', class: 'to'
+  .form
+    = form.label t('.subject')
+    = form.text_area :subject, size: '50x1', class: 'subject'
+  .form
+    = form.label t('.content'), class: 'content-label'
+    = form.text_area :content, size: '50x5', class: 'content-area'
+  .form
+    = form.submit :Send
+    = form.submit 'Save as draft', name: 'abc'

@@ -1,0 +1,76 @@
+@import '~bootstrap/scss/bootstrap';
+
+ul {
+  list-style-type: none;
+}
+
+.background {
+  background: url(https://live.staticflickr.com/1241/1186599782_c8d9e290b6_b.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 120%;
+}
+
+.view-port-height {
+  height: 100vh;
+}
+
+.link-color {
+  color: aqua
+}
+
+.index {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+  border-radius: 5px;
+  text-align: center;
+  margin: 5px 0 0 0;
+}
+
+.compose {
+  border: solid;
+  border-width: 0 0 2px 0;
+}
+
+.menu {
+  background: linear-gradient(90deg, rgba(145,243,230,1) 5%, rgba(148,243,165,1) 22%, rgba(152,230,243,1) 42%, rgba(162,243,145,1) 91%, rgba(173,255,251,1) 100%);
+}
+
+.mail {
+  background: linear-gradient(90deg, rgba(141,231,160,1) 6%, rgba(224,141,231,1) 20%, rgba(141,231,160,1) 38%, rgba(141,231,160,1) 54%, rgba(254,141,255,1) 72%, rgba(141,231,160,1) 91%, rgba(253,173,255,1) 100%);
+}
+
+// .view-port-height .row .col-3 .text-primary {
+//     --bs-text-opacity: .2;
+// }
+
+.menu-opacity {
+  --bs-bg-opacity: .4 !important;
+}
+
+.mail-opacity {
+  --bs-bg-opacity: .5 !important;
+}
+
+/* Compose form */
+.form {
+  margin: 15px 0px 0px 0px;
+}
+
+.to {
+  margin: 0px 0px -8px 47px;
+}
+
+.subject {
+  margin: 0px 0px -8px 10px;
+}
+
+.content-label {
+  margin: 0px 0px 100px 0px;
+  vertical-align: bottom;
+}
+
+.content-area {
+  margin: 0px 0px -8px 5px;
+}

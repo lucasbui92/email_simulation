@@ -1,0 +1,10 @@
+---
+cn:
+  emails:
+    form:
+      compose-email: 撰写电子邮件
+      to: 到
+      subject: 主题
+      content: 内容
+      send: 发送
+      save-draft: 保存为草稿
