@@ -1,2 +1,2 @@
 emails = document.getElementById("emails")
-emails.innerHTML = "<%= j render(@emails) %>"
+emails.innerHTML = "<%= j render(@emails, deletable: false) %>"

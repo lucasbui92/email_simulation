@@ -4,13 +4,16 @@ class EmailsController < ApplicationController
   respond_to :html, :js
 
   def new
-    @email = Email.new
+    @email = ComposeEmailForm.new(current_user)
   end
 
   def create
-    @email = Emails::CreateEmailService.call(commit: params[:commit], email_params: email_params, user: current_user)
-    render :new if @email.errors.any?
-    @emails = current_user.sent_status_emails
+    @email = ComposeEmailForm.new(current_user, params[:commit], composing_email_params)
+    if @email.save
+      @emails = current_user.sent_status_emails
+    else
+      render :new
+    end
   end
 
   def sent
@@ -38,5 +41,9 @@ class EmailsController < ApplicationController
 
   def email_params
     params.require(:email).permit(:subject, :content)
+  end
+
+  def composing_email_params
+    params.require(:compose_email_form).permit(:to, :subject, :content)
   end
 end
