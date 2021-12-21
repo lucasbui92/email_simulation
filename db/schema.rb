@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_03_093001) do
+ActiveRecord::Schema.define(version: 2021_12_19_142625) do
 
   create_table "drafting_emails", id: false, force: :cascade do |t|
     t.integer "user_id"
@@ -27,6 +27,18 @@ ActiveRecord::Schema.define(version: 2021_11_03_093001) do
     t.boolean "is_deleted", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "received_emails", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "email_id"
+    t.integer "recipient_type", default: 0
+    t.integer "status", default: 0
+    t.boolean "is_starred", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email_id"], name: "index_received_emails_on_email_id"
+    t.index ["user_id"], name: "index_received_emails_on_user_id"
   end
 
   create_table "sent_emails", id: false, force: :cascade do |t|
@@ -65,6 +77,8 @@ ActiveRecord::Schema.define(version: 2021_11_03_093001) do
 
   add_foreign_key "drafting_emails", "emails"
   add_foreign_key "drafting_emails", "users"
+  add_foreign_key "received_emails", "emails"
+  add_foreign_key "received_emails", "users"
   add_foreign_key "sent_emails", "emails"
   add_foreign_key "sent_emails", "users"
 end

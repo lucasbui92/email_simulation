@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   get '/users/sign_out', to: 'devise/sessions#destroy'
 
+  get 'inbox', to: 'emails#inbox'
   get 'sent', to: 'emails#sent'
   get 'draft', to: 'emails#draft'
   get 'delete', to: 'emails#delete'

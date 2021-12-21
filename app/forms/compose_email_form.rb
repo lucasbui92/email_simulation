@@ -19,11 +19,19 @@ class ComposeEmailForm
         drafting_email.save!
       else
         sent_email.save!
+        MyMailer.sending_email(@user, to, subject, content).deliver_later
+
+        recipient = User.find_by(email: to)
+        recipient_email(recipient).save! if recipient.present?
       end
     end
   end
 
   private
+
+  def recipient_email(recipient)
+    recipient.received_status_emails.new(subject: subject, content: content)
+  end
 
   def drafting_email
     @email ||= @user.draft_status_emails.new(subject: subject, content: content)

@@ -1,7 +1,7 @@
 ---
 en:
   emails:
-    form:
+    compose:
       compose-email: Compose an email
       to: To
       subject: Subject

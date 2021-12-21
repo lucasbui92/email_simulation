@@ -16,8 +16,12 @@ class EmailsController < ApplicationController
     end
   end
 
+  def inbox
+    @emails = current_user.received_status_emails
+  end
+
   def sent
-    @emails = current_user.sent_status_emails.has_sent_emails
+    @emails = current_user.sent_status_emails
   end
 
   def draft

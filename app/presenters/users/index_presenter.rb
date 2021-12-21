@@ -11,6 +11,10 @@ class Users::IndexPresenter < BasePresenter
     h.link_to translation_path, new_email_path(locale: I18n.locale), remote: true, class: 'link-color'
   end
 
+  def inbox(translation_path)
+    h.link_to translation_path, inbox_path(locale: I18n.locale), remote: true
+  end
+
   def sent(translation_path)
     h.link_to translation_path, sent_path(locale: I18n.locale), remote: true
   end

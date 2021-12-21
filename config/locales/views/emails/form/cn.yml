@@ -1,7 +1,7 @@
 ---
 cn:
   emails:
-    form:
+    compose:
       compose-email: 撰写电子邮件
       to: 到
       subject: 主题
