@@ -10,11 +10,14 @@ Rails.application.routes.draw do
   get 'inbox', to: 'emails#inbox'
   get 'sent', to: 'emails#sent'
   get 'draft', to: 'emails#draft'
+  get 'starred', to: 'emails#starred'
   get 'delete', to: 'emails#delete'
 
-  resources :emails, only: [:new, :create] do
+  resources :emails, only: [:show, :new, :create] do
     # Move all selected emails to `delete` folder
     put 'moved', to: 'emails#moved_to_trash', as: 'moved_to_trash'
+    put 'starred', to: 'emails#mark_favorite'
+    put 'unstarred', to: 'emails#mark_unfavorite'
   end
 
   resources :users do

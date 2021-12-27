@@ -29,6 +29,10 @@ gem 'devise'
 gem 'haml-rails', '~> 2.0'
 # Use Kaminari
 gem 'kaminari'
+# Use Draper (Decorator)
+gem 'draper'
+# Use Kaminari
+gem 'kaminari'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ComposeEmailForm
   include ActiveModel::Model
 
@@ -18,34 +20,40 @@ class ComposeEmailForm
       if @commit == Email::SAVE_DRAFT
         drafting_email.save!
       else
-        sent_email.save!
-        MyMailer.sending_email(@user, to, subject, content).deliver_later
-
-        recipient = User.find_by(email: to)
-        recipient_email(recipient).save! if recipient.present?
+        process_sending_email
       end
     end
   end
 
   private
 
-  def recipient_email(recipient)
-    recipient.received_status_emails.new(subject: subject, content: content)
+  def process_sending_email
+    sent_email.save!
+
+    recipient = User.find_by(email: to)
+    return if recipient.blank?
+
+    recipient_email(recipient, sent_email).save!
+    MyMailer.sending_email(@user, to, subject, content).deliver_later
+  end
+
+  def recipient_email(recipient, email)
+    recipient.received_emails.new(email_id: email.id)
   end
 
   def drafting_email
-    @email ||= @user.draft_status_emails.new(subject: subject, content: content)
+    @drafting_email ||= @user.draft_status_emails.new(subject: subject, content: content)
   end
 
   def sent_email
-    @email ||= @user.sent_status_emails.new(subject: subject, content: content)
+    @sent_email ||= @user.sent_status_emails.new(subject: subject, content: content)
   end
 
   def email_input
     if @commit == Email::SAVE_DRAFT
       promote_errors(drafting_email) if drafting_email.invalid?
-    else
-      promote_errors(sent_email) if sent_email.invalid?
+    elsif sent_email.invalid?
+      promote_errors(sent_email)
     end
   end
 

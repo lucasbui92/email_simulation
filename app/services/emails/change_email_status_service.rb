@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Emails::MoveToTrashService < ApplicationService
+class Emails::ChangeEmailStatusService < ApplicationService
   attr_reader :email_id, :user
 
   def initialize(email_id:, user:)
@@ -10,8 +10,8 @@ class Emails::MoveToTrashService < ApplicationService
   end
 
   def call
-    @email = @user.sent_status_emails.find(@email_id)
-    @email.is_deleted = true
-    @email.save
+    @user_email = @user.received_emails.find_by(email_id: @email_id)
+    @user_email.status = 'read'
+    @user_email.save
   end
 end

@@ -15,7 +15,8 @@ class Email < ApplicationRecord
 
   validates :subject, allow_blank: false, presence: true
 
-  # scope :has_sent_emails, -> { where(is_deleted: false) }
+  scope :starred_only, -> { includes(:received_emails).where(received_emails: { is_starred: true }) }
+  scope :unstarred_only, -> { includes(:received_emails).where(received_emails: { is_starred: false }) }
 
   # accepts_nested_attributes_for :sent_emails
 end

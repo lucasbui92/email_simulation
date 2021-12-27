@@ -1,0 +1,11 @@
+.form
+  = label_tag 'from', 'From:'
+  %p.border= email.sender_users.first.email
+.form
+  = label_tag 'to', 'To:'
+.form
+  = label_tag 'subject', 'Subject:'
+  %p.border= email.subject
+.form
+  = label_tag 'content', 'Content:'
+  %p.border= email.content

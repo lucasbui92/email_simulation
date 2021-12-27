@@ -5,7 +5,7 @@ ul {
 }
 
 .background {
-  background: url(https://live.staticflickr.com/1241/1186599782_c8d9e290b6_b.jpg);
+  background: url(https://t3.ftcdn.net/jpg/02/82/86/40/360_F_282864082_zi9LXXEvVMFC7ZGby7jyL52tRrjDeC7U.jpg);
   background-repeat: no-repeat;
   background-size: 100% 120%;
 }
@@ -77,4 +77,25 @@ ul {
 
 .content-area {
   margin: 0px 0px -8px 5px;
+}
+
+/* Email list */
+.highlight-email-link {
+  font-weight: bold;
+}
+
+.trash-link {
+  position: absolute;
+  left: 80%;
+}
+
+.star-link {
+  position: absolute;
+  left: 82%;
+}
+
+/* Show form */
+.border {
+  display: inline-block;
+  border-style: double;
 }
