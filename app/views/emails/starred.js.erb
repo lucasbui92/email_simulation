@@ -1,4 +1,3 @@
 emails = document.getElementById("emails")
 
-emails.innerHTML = "<%= j paginate(@emails, remote: true) %>"
-emails.innerHTML += "<%= j render(@emails, deletable: false, inbox: false, starred: true) %>"
+emails.innerHTML = "<%= j render 'email', deletable: false, inbox: false, starred: true %>"

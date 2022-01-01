@@ -1,7 +1,9 @@
-%li
+= paginate @emails, remote: true
+
+- @emails.each do |email|
+  %li
   = check_box_tag 'email_ids[]', email.id
   -# = "#{email.first_name} #{email.last_name}"
-  -# = email.sender_users.first.decorate.full_name
   = @presenter.highlight_email(inbox, email)
   = @presenter.move_email_to_trash(deletable, email)
   = @presenter.mark_email_as_favorite(inbox, email)

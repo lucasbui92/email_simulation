@@ -1,4 +1,9 @@
-emails = document.getElementById("emails")
+// Option 1 (Not the optimal solution)
+// sentButton = document.getElementById('sent-button');
+// sentButton.click();
 
-emails.innerHTML = "<%= j paginate(@emails, remote: true) %>"
-emails.innerHTML += "<%= j render(@emails, deletable: false, inbox: false, starred: false) %>"
+// Option 2
+let xhttp = new XMLHttpRequest();
+
+xhttp.open('GET', '/sent', true);
+xhttp.send();

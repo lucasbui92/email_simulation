@@ -1,0 +1,17 @@
+---
+en:
+  layouts:
+    shared:
+      interface:
+        mailbox: Mailbox
+        switch-language: Switch to Chinese
+        menu: Menu
+        compose: Compose
+        inbox: Inbox
+        sent: Sent
+        draft: Draft
+        starred: Starred
+        deleted: Deleted
+        mails: Mails
+        sign-out: Sign out
+        delete-selected: Delete all the selected

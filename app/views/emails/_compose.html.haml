@@ -1,10 +1,14 @@
-- if email.errors.any?
+- if email.errors.any? || flash.any?
+  -# - count = flash.count if flash.any?
   %h2
     %p.error
       = pluralize(email.errors.count, 'error')
       prohibited this article from being saved:
   - email.errors.each do |error|
     = error.full_message
+  %br
+  - flash.each do |type, msg|
+    = msg
 
 %h2= t('.compose-email')
 = form_with model: email, url: emails_path, local: false do |form|

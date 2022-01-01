@@ -1,4 +1,4 @@
-emails = document.getElementById("emails")
+emails = document.getElementById("emails");
 
-emails.innerHTML = "<%= j paginate(@emails, remote: true) %>"
-emails.innerHTML += "<%= j render(@emails, deletable: false, inbox: false, starred: false) %>"
+emails.innerHTML = "<%= j render 'email', deletable: false, inbox: false, starred: false %>";
+console.log('SENT');

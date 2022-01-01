@@ -3,6 +3,8 @@
 class EmailsController < ApplicationController
   respond_to :html, :js
 
+  skip_before_action :verify_authenticity_token, only: :sent
+
   before_action :set_presenter, except: [:show, :new, :moved_to_trash, :destroy]
 
   def show
@@ -47,7 +49,6 @@ class EmailsController < ApplicationController
 
   def starred
     @emails = current_user.received_status_emails.starred_only.page(params[:page])
-    # @emails = current_user.received_status_emails.joins(:received_emails).select('emails.*,  received_emails.is_starred')
   end
 
   def moved_to_trash
@@ -56,7 +57,7 @@ class EmailsController < ApplicationController
   end
 
   def delete
-    @emails = current_user.sent_status_emails.where(is_deleted: true)
+    @emails = current_user.sent_status_emails.where(is_deleted: true).page(params[:page])
   end
 
   def destroy

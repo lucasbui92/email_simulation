@@ -1,0 +1,20 @@
+.row.compose
+  %li
+    %i.fas.fa-edit
+    = link_to t('.compose'), new_email_path(locale: I18n.locale), remote: true, class: 'link-color'
+.row
+  %li
+    %i.fas.fa-envelope
+    = link_to t('.inbox'), inbox_path(locale: I18n.locale), remote: true
+  %li
+    %i.fas.fa-paper-plane
+    = link_to t('.sent'), sent_path(locale: I18n.locale), remote: true, id: 'sent-button'
+  %li
+    %i.fas.fa-save
+    = link_to t('.draft'), draft_path(locale: I18n.locale), remote: true
+  %li
+    %i.fas.fa-star
+    = link_to t('.starred'), starred_path(locale: I18n.locale), remote: true
+  %li
+    %i.fas.fa-trash-alt
+    = link_to t('.delete'), delete_path(locale: I18n.locale), remote: true

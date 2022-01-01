@@ -28,11 +28,10 @@ class ComposeEmailForm
   private
 
   def process_sending_email
-    sent_email.save!
-
     recipient = User.find_by(email: to)
-    return if recipient.blank?
+    errors.add("Email '#{to}' ", 'does not exist.') and return if recipient.blank?
 
+    sent_email.save!
     recipient_email(recipient, sent_email).save!
     MyMailer.sending_email(@user, to, subject, content).deliver_later
   end

@@ -33,6 +33,8 @@ gem 'kaminari'
 gem 'draper'
 # Use Kaminari
 gem 'kaminari'
+# Use Sidekiq
+gem 'sidekiq'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
