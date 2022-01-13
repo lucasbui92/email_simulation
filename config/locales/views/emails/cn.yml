@@ -8,3 +8,5 @@ cn:
       content: 内容
       send: 发送
       save-draft: 保存为草稿
+    delete:
+      delete-selected: 删除了选定的项目

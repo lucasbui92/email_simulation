@@ -14,9 +14,7 @@
       = render 'layouts/shared/menu_side_bar'
   .col-9.card.text-dark-50.bg-info.mb-3.mail-opacity
     %h4.header.mail.text-primary.text-opacity-75= t('.mails')
-    %ul.card-body#emails
-    %div
-    = link_to t('.delete-selected'), user_delete_emails_path(current_user), method: :delete, class: 'link-color'
+    .card-body#emails
 
 .btn.btn-link{ type: 'button' }
   = link_to t('.sign-out'), destroy_user_session_path, method: :delete, class: 'link-color' if user_signed_in?

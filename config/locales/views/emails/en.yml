@@ -8,3 +8,5 @@ en:
       content: Content
       send: Send
       save-draft: Save as draft
+    delete:
+      delete-selected: Delete all the selected

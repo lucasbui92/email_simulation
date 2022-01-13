@@ -1,0 +1,11 @@
+---
+en:
+  layouts:
+    shared:
+      menu_side_bar:
+        compose: Compose
+        inbox: Inbox
+        sent: Sent
+        draft: Draft
+        starred: Starred
+        trash: Trash

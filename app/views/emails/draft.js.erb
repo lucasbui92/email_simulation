@@ -1,3 +1,3 @@
 emails = document.getElementById("emails")
 
-emails.innerHTML = "<%= j render 'email', deletable: true, inbox: false, starred: false %>"
+emails.innerHTML = "<%= j render 'email', trash_category: 'draft', inbox: false, starred: false %>"

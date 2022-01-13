@@ -94,8 +94,18 @@ ul {
   left: 82%;
 }
 
+.read-unread-link {
+  position: absolute;
+  left: 84.5%;
+}
+
 /* Show form */
 .border {
   display: inline-block;
   border-style: double;
+}
+
+/* Trash category */
+.inbox-email {
+  color: green;
 }

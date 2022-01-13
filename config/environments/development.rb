@@ -98,5 +98,6 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
 
   # Enable Sidekiq
-  config.active_job.queue_adapter = :sidekiq
+  # config.active_job.queue_adapter = :sidekiq
+  # config.action_mailer.deliver_later_queue_name = 'mailers'
 end

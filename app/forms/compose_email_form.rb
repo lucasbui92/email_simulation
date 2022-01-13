@@ -32,12 +32,8 @@ class ComposeEmailForm
     errors.add("Email '#{to}' ", 'does not exist.') and return if recipient.blank?
 
     sent_email.save!
-    recipient_email(recipient, sent_email).save!
+    recipient.received_emails.new(email_id: sent_email.id).save!
     MyMailer.sending_email(@user, to, subject, content).deliver_later
-  end
-
-  def recipient_email(recipient, email)
-    recipient.received_emails.new(email_id: email.id)
   end
 
   def drafting_email

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_19_142625) do
+ActiveRecord::Schema.define(version: 2022_01_12_134940) do
 
   create_table "drafting_emails", id: false, force: :cascade do |t|
     t.integer "user_id"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2021_12_19_142625) do
     t.boolean "is_starred", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_deleted", default: false
     t.index ["email_id"], name: "index_received_emails_on_email_id"
     t.index ["user_id"], name: "index_received_emails_on_user_id"
   end

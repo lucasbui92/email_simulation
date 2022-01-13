@@ -14,16 +14,20 @@ Rails.application.routes.draw do
   get 'sent', to: 'emails#sent'
   get 'draft', to: 'emails#draft'
   get 'starred', to: 'emails#starred'
-  get 'delete', to: 'emails#delete'
+  get 'trash', to: 'emails#trash'
 
   resources :emails, only: [:show, :new, :create] do
     # Move all selected emails to `delete` folder
-    put 'moved', to: 'emails#moved_to_trash', as: 'moved_to_trash'
+    put 'delete', to: 'emails#move_to_trash'
+
+    # Unstar email items within the Starred category
+    put 'unfavorite', to: 'emails#unfavorite'
+
     put 'starred', to: 'emails#mark_favorite'
     put 'unstarred', to: 'emails#mark_unfavorite'
+    put 'read', to: 'emails#mark_read'
+    put 'unread', to: 'emails#mark_unread'
   end
 
-  resources :users do
-    delete 'delete_emails', to: 'emails#destroy'
-  end
+  put 'delete_selected_emails', to: 'emails#destroy'
 end

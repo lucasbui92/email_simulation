@@ -6,12 +6,5 @@ cn:
         mailbox: 邮箱
         switch-language: 切换到英文
         menu: 选择
-        compose: 撰写
-        inbox: 收件箱
-        sent: 发送
-        draft: 草案
-        starred: 最喜欢的
-        deleted: 已删除
         mails: 邮件
         sign-out: 登出
-        delete-selected: 删除了选定的项目

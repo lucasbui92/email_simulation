@@ -1,10 +1,19 @@
-= paginate @emails, remote: true
+- if @condition
+  = paginate @emails, params: { controller: params[:controller], action: @action }, remote: true
+- else
+  = paginate @emails, remote: true
 
-- @emails.each do |email|
-  %li
-  = check_box_tag 'email_ids[]', email.id
-  -# = "#{email.first_name} #{email.last_name}"
-  = @presenter.highlight_email(inbox, email)
-  = @presenter.move_email_to_trash(deletable, email)
-  = @presenter.mark_email_as_favorite(inbox, email)
-  = @presenter.unmark_favorite_email(starred, email)
+= form_tag delete_selected_emails_path, method: :put, remote: true do
+  %ul
+    - @emails.each do |email|
+      %li
+        = check_box_tag 'email_ids[]', email.id
+        -# = "#{email.first_name} #{email.last_name}"
+        = @presenter.highlight_email(inbox, email)
+        = @presenter.move_email_to_trash(trash_category, email)
+        = @presenter.mark_email_status(inbox, email, is_checking_starred=true)
+        = @presenter.unmark_favorite_email(starred, email)
+        = @presenter.mark_email_status(inbox, email)
+
+  = yield(:delete_selected) if content_for :delete_selected
+
