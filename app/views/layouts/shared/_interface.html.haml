@@ -1,0 +1,20 @@
+-# haml-lint:disable LineLength
+%h2= t('.mailbox')
+
+.btn.btn-link{ type: 'button' }
+  - if params[:locale] == User::ENGLISH_CODE
+    = link_to t('.switch-language'), root_path(locale: User::CHINESE_CODE), class: 'link-color'
+  - else
+    = link_to t('.switch-language'), root_path(locale: User::ENGLISH_CODE), class: 'link-color'
+
+.row
+  .col-3.card.text-dark.bg-warning.mb-3.menu-opacity
+    %h4.header.menu.text-primary.text-opacity-75= t('.menu')
+    %ul.card-body
+      = render 'layouts/shared/menu_side_bar'
+  .col-9.card.text-dark-50.bg-info.mb-3.mail-opacity
+    %h4.header.mail.text-primary.text-opacity-75= t('.mails')
+    .card-body#emails
+
+.btn.btn-link{ type: 'button' }
+  = link_to t('.sign-out'), destroy_user_session_path, method: :delete, class: 'link-color' if user_signed_in?

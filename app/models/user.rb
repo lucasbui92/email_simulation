@@ -9,9 +9,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # Pointing towards the `through` tables
+  has_many :received_emails, dependent: :destroy
   has_many :sent_emails, dependent: :destroy
   has_many :drafting_emails, dependent: :destroy
 
+  # Via `through` tables, get Email based on the status
+  has_many :received_status_emails, through: :received_emails, source: :email, inverse_of: :recipients
   has_many :sent_status_emails, through: :sent_emails, source: :email, inverse_of: :sender_users
   has_many :draft_status_emails, through: :drafting_emails, source: :email, inverse_of: :drafter_users
 

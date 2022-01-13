@@ -1,5 +1,19 @@
-%li
-  = check_box_tag 'email_ids[]', email.id
-  = email.subject
-  - unless deletable
-    = link_to 'Move to trash', email_moved_to_trash_path(email), method: :put, remote: true
+- if @condition
+  = paginate @emails, params: { controller: params[:controller], action: @action }, remote: true
+- else
+  = paginate @emails, remote: true
+
+= form_tag delete_selected_emails_path, method: :put, remote: true do
+  %ul
+    - @emails.each do |email|
+      %li
+        = check_box_tag 'email_ids[]', email.id
+        -# = "#{email.first_name} #{email.last_name}"
+        = @presenter.highlight_email(inbox, email)
+        = @presenter.move_email_to_trash(trash_category, email)
+        = @presenter.mark_email_status(inbox, email, is_checking_starred=true)
+        = @presenter.unmark_favorite_email(starred, email)
+        = @presenter.mark_email_status(inbox, email)
+
+  = yield(:delete_selected) if content_for :delete_selected
+

@@ -1,15 +1,17 @@
-- flash.each do |msg, name|
-  = content_tag :div, msg, class: name
-
-- if email.errors.any?
+- if email.errors.any? || flash.any?
+  -# - count = flash.count if flash.any?
   %h2
-    = pluralize(email.errors.count, 'error')
-    prohibited this article from being saved:
+    %p.error
+      = pluralize(email.errors.count, 'error')
+      prohibited this article from being saved:
   - email.errors.each do |error|
-    - error.full_message
+    = error.full_message
+  %br
+  - flash.each do |type, msg|
+    = msg
 
 %h2= t('.compose-email')
-= form_with model: email, local: false do |form|
+= form_with model: email, url: emails_path, local: false do |form|
   .form
     = form.label t('.to')
     = form.text_area :to, size: '50x1', class: 'to'
@@ -21,4 +23,4 @@
     = form.text_area :content, size: '50x5', class: 'content-area'
   .form
     = form.submit :Send
-    = form.submit 'Save as draft', name: 'abc'
+    = form.submit 'Save as draft'

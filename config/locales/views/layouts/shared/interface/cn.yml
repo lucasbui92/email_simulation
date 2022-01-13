@@ -1,0 +1,10 @@
+---
+cn:
+  layouts:
+    shared:
+      interface:
+        mailbox: 邮箱
+        switch-language: 切换到英文
+        menu: 选择
+        mails: 邮件
+        sign-out: 登出

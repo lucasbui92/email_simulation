@@ -1,0 +1,11 @@
+---
+cn:
+  layouts:
+    shared:
+      menu_side_bar:
+        compose: 撰写
+        inbox: 收件箱
+        sent: 发送
+        draft: 草案
+        starred: 最喜欢的
+        trash: 已删除

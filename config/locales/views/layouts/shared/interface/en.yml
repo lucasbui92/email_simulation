@@ -1,0 +1,10 @@
+---
+en:
+  layouts:
+    shared:
+      interface:
+        mailbox: Mailbox
+        switch-language: Switch to Chinese
+        menu: Menu
+        mails: Mails
+        sign-out: Sign out

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BasePresenter
   include ActiveModel::Model
   include ActiveModel::Attributes
@@ -12,20 +14,28 @@ class BasePresenter
     @args = args
   end
 
-  private
+  class << self
+    private
 
-  def self.presents(name)
-    define_method(name) do
-      @object
+    def presents(name)
+      define_method(name) do
+        @object
+      end
     end
   end
+
+  private
 
   def h
     @template
   end
 
-  def method_missing(*args, &block)
-    @template.send(*args, &block)
+  def method_missing(...)
+    @template.send(...)
+  end
+
+  def respond_to_missing?(...)
+    @template.send(...)
   end
 
   def current_user

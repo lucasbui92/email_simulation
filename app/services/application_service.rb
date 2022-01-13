@@ -1,5 +1,9 @@
+# frozen_string_literal: true
+
 class ApplicationService
-    def self.call(*args, &block)
-        new(*args, &block).call
-    end
+  def initialize(**args); end
+
+  def self.call(...)
+    new(...).call
+  end
 end

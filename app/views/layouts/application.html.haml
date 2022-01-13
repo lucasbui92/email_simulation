@@ -1,0 +1,14 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title EmailSimulation
+    = csrf_meta_tags
+    = csp_meta_tag
+    %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}/
+    = stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload', media: 'all'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    .view-port-height.container-fluid.background.p-3.mb-2.text-white
+      = render 'layouts/shared/interface'
+      = yield
